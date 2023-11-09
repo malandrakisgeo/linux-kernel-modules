@@ -165,8 +165,8 @@ static void __exit connect_hook_exit(void)
         if(next->ip != NULL){
             //print_ips(next); //uncomment for testing
         }
-		kfree_sensitive(next->previous); //aka kzalloc
-		next = next->next;
+	kfree_sensitive(next->previous); //aka kzfree
+	next = next->next;
 	}
     unregister_kprobe(&kp);
     printk(KERN_INFO "kprobe at %p unregistered\n", kp.addr);
